@@ -14,6 +14,8 @@ const home = require("./src/routes/home");
 app.set("views", "./src/views");
 // 어떤 파일을 볼 것인지를 설정하는 코드
 app.set("view engine", "ejs");
+// 현재 디렉토리를 찾는 __dirname. 현재 파일인 app.js의 현재 위치에서 src폴더의 public폴더를 정적 경로로 설정한다.
+app.use(express.static(`${__dirname}/src/public`));
 
 // use -> 미들 웨어를 등록해주는 메서드
 app.use("/", home);
