@@ -4,13 +4,12 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("home/index");
-})
+// 불러오기
+const ctrl = require("./home.ctrl");
 
-router.get("/login", (req, res) => {
-  res.render("home/login");
-})
+router.get("/", ctrl.home)
+
+router.get("/login", ctrl.login)
 
 // 라우터를 사용할 수 있도록 외부로 던져준다.
 module.exports = router;
