@@ -8,10 +8,10 @@ const express = require("express");
 const app = express();
 
 // 라우팅. 경로를 설정해주어야 가져올 수 있다. index.js를 가져온다.
-const home = require("./routes/home");
+const home = require("./src/routes/home");
 
 // 앱 세팅. 기본 경로를 설정하는 코드
-app.set("views", "./views");
+app.set("views", "./src/views");
 // 어떤 파일을 볼 것인지를 설정하는 코드
 app.set("view engine", "ejs");
 
