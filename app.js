@@ -7,8 +7,6 @@
 const express = require("express");
 const app = express();
 
-const PORT = 3000;
-
 // 라우팅. 경로를 설정해주어야 가져올 수 있다. index.js를 가져온다.
 const home = require("./routes/home");
 
@@ -17,10 +15,7 @@ app.set("views", "./views");
 // 어떤 파일을 볼 것인지를 설정하는 코드
 app.set("view engine", "ejs");
 
-
 // use -> 미들 웨어를 등록해주는 메서드
 app.use("/", home);
 
-app.listen(PORT, function () {
-  console.log("서버 가동");
-})
+module.exports = app;
