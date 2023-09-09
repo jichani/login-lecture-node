@@ -19,5 +19,18 @@ function login() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(req),
-  }).then((res) => res.json()).then(console.log);
-}
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) {
+        // 이동할 링크를 지정한다.
+        location.href = "/";
+      } else {
+        alert(res.msg);
+      }
+    })
+    .catch((err) => {
+      // 빨간색 에러 메시지 띄우게 구현
+      console.error(new Error("로그인 중 에러 발생"));
+    })
+};
