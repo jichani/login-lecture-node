@@ -7,9 +7,10 @@ const router = express.Router();
 // 불러오기
 const ctrl = require("./home.ctrl");
 
-router.get("/", ctrl.home)
+router.get("/", ctrl.output.home)
+router.get("/login", ctrl.output.login)
 
-router.get("/login", ctrl.login)
+router.post("/login", ctrl.process.login)
 
 // 라우터를 사용할 수 있도록 외부로 던져준다.
 module.exports = router;

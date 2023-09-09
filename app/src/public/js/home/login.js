@@ -20,7 +20,4 @@ function login() {
     },
     body: JSON.stringify(req),
   })
-
-  console.log(req);
-  console.log(JSON.stringify(req));
 }

@@ -5,6 +5,7 @@
 
 // 모듈. express로 서버 띄워보기. npm i express로 설치함
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
 // 라우팅. 경로를 설정해주어야 가져올 수 있다. index.js를 가져온다.
@@ -16,6 +17,10 @@ app.set("views", "./src/views");
 app.set("view engine", "ejs");
 // 현재 디렉토리를 찾는 __dirname. 현재 파일인 app.js의 현재 위치에서 src폴더의 public폴더를 정적 경로로 설정한다.
 app.use(express.static(`${__dirname}/src/public`));
+// 바디파서 설정. 
+app.use(bodyParser.json());
+// URL을 통해 전달되는 데이터에 한글, 공백 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결하는 코드
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // use -> 미들 웨어를 등록해주는 메서드
 app.use("/", home);
