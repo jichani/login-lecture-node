@@ -7,7 +7,7 @@
   <title>login</title>
   <link rel="stylesheet" href="/css/home/login.css">
   <!-- defer와 async는 <head> 태그 안에서 사용된다. defer는 html을 다 읽은 후 스크립트를 읽는다. async는 독자적으로 읽기 시작한다. dom을 사용할 때는 defer를 사용하는 것이 좋은듯?-->
-  <script src="/js/home/login.js" defer></script>
+  <script src="/js/home/register.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <input id="name" type="text" placeholder="이름" />
         <input id="psword" type="password" placeholder="비밀번호" />
         <input id="confirm-psword" type="password" placeholder="비밀번호 확인" />
-        <button>SIGN UP</button>
+        <p id="button">SIGN UP</p>
         <p class="message">Already registered? <a href="/login">login</a></p>
       </form>
     </div>
