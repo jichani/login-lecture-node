@@ -3,7 +3,7 @@
 
 // http로 서버 띄워보기. http는 내장 모듈. 불편한 점이 많아서 express를 사용함.
 
-// 모듈. express로 서버 띄워보기. npm i express로 설치함
+// 모듈. express로 서버 띄워보기. npm i express로 설치함.
 const express = require("express");
 const bodyParser = require("body-parser");
 require('dotenv').config();
