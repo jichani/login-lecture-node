@@ -10,7 +10,6 @@ registerBtn.addEventListener("click", register);
 
 function register() {
   if (!id.value) return alert("아이디를 입력해주십시오.");
-  if (!name.value) return alert("이름을 입력해주십시오.");
   if (psword.value !== confirmPsword.value) return alert("비밀번호가 일치하지 않습니다.");
 
 
@@ -34,6 +33,7 @@ function register() {
         // 이동할 링크를 지정한다.
         location.href = "/login";
       } else {
+        if (res.err) return alert(res.err);
         alert(res.msg);
       }
     })

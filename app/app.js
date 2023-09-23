@@ -1,11 +1,12 @@
-"use strict";
 //이크마 스크립트 문법을 준수하겠다는 표현 사용!
+"use strict";
 
 // http로 서버 띄워보기. http는 내장 모듈. 불편한 점이 많아서 express를 사용함.
 
-// 모듈. express로 서버 띄워보기. npm i express로 설치함
+// 모듈. express로 서버 띄워보기. npm i express로 설치함.
 const express = require("express");
 const bodyParser = require("body-parser");
+
 require('dotenv').config();
 const morgan = require("morgan");
 
