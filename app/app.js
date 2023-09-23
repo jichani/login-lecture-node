@@ -7,9 +7,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 require('dotenv').config();
+const morgan = require("morgan");
+
 
 const app = express();
 
+const accessLogStream = require("./src/config/log");
 // 라우팅. 경로를 설정해주어야 가져올 수 있다. index.js를 가져온다.
 const home = require("./src/routes/home");
 
@@ -23,7 +26,9 @@ app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.json());
 // URL을 통해 전달되는 데이터에 한글, 공백 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결하는 코드
 app.use(bodyParser.urlencoded({ extended: true }));
-
+// morgan
+app.use(morgan("dev"));
+app.use(morgan("common", { stream: accessLogStream }));
 // use -> 미들 웨어를 등록해주는 메서드
 app.use("/", home);
 
