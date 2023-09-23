@@ -6,6 +6,8 @@
 // 모듈. express로 서버 띄워보기. npm i express로 설치함
 const express = require("express");
 const bodyParser = require("body-parser");
+require('dotenv').config();
+
 const app = express();
 
 // 라우팅. 경로를 설정해주어야 가져올 수 있다. index.js를 가져온다.

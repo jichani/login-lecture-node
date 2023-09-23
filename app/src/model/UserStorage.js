@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs").promises;
+const db = require("../config/db");
 
 class UserStorage {
   // # 표시로 private하게 만든다.
@@ -36,35 +36,19 @@ class UserStorage {
   }
 
   static getUsers(isAll, ...fields) {
-    return fs
-      .readFile("./src/databases/users.json")
-      .then((data) => {
-        return this.#getUsers(data, isAll, fields);
-      })
-      .catch(console.error);
   }
 
   static getUserInfo(id) {
-    return fs
-      .readFile("./src/databases/users.json")
-      .then((data) => {
-        return this.#getUserInfo(data, id);
+    return new Promise((resolve, reject) => {
+      db.query("SELECT * FROM users WHERE id = ?", [id], (err, data) => {
+        if (err) reject(err);
+        resolve(data[0]);
       })
-      .catch(console.error);
+    })
   }
+  // 4:!5
 
   static async save(userInfo) {
-    // "id", "psword", "name" 모든 데이터를 가져오고 싶을 때 true를 적으면 된다.
-    const users = await this.getUsers(true);
-    if (users.id.includes(userInfo.id)) {
-      throw "이미 존재하는 아이디입니다.";
-    }
-    users.id.push(userInfo.id);
-    users.name.push(userInfo.name);
-    users.psword.push(userInfo.psword);
-    fs.writeFile("./src/databases/users.json", JSON.stringify(users));
-    return { success: true }
-    // 데이터 추가
   }
 };
 
